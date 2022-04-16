@@ -1,5 +1,5 @@
-import ErrorMiddleware from '@/middleware/error.middleware';
-import Controller from '@/utils/interfaces/controller.interface';
+import ErrorMiddleware from '@middleware/error.middleware';
+import Controller from '@utils/interfaces/controller.interface';
 import compression from 'compression';
 import cors from 'cors';
 import express, { Application } from 'express';
@@ -15,10 +15,18 @@ class App {
     this.express = express();
     this.port = port;
 
-    this.initialiseDatabaseConnection();
+    App.initialiseDatabaseConnection();
     this.initialiseMiddleware();
     this.initialiseControllers(controllers);
     this.initialiseErrorHandling();
+  }
+
+  private static initialiseDatabaseConnection(): void {
+    const { MONGO_USER, MONGO_PASSWORD, MONGO_PATH } = process.env;
+
+    mongoose.connect(
+      `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}${MONGO_PATH}`
+    );
   }
 
   public listen(): void {
@@ -44,14 +52,6 @@ class App {
 
   private initialiseErrorHandling(): void {
     this.express.use(ErrorMiddleware);
-  }
-
-  private initialiseDatabaseConnection(): void {
-    const { MONGO_USER, MONGO_PASSWORD, MONGO_PATH } = process.env;
-
-    mongoose.connect(
-      `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}${MONGO_PATH}`
-    );
   }
 }
 
