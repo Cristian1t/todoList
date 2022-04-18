@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        name="viewport">
+  <meta content="ie=edge" http-equiv="X-UA-Compatible">
+  <link href="src/styles/style.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+  <title>ToDo List</title>
+</head>
+<body>
+<div class="wrapper">
+  <div class="top-bar">
+    <h2>To Do List</h2>
+    <div class="add-task">
+      <button class="add-task-btn">Add task</button>
+    </div>
+  </div>
+  <div class="tasks-wrapper" id="tasks">
+  </div>
+
+  <dialog class="create-task-modal" id="modal">
+    <div class="create-modal-container">
+      <h4>Create new task</h4>
+      <form class="create-form" id="modal-form">
+
+        <div class="input-block">
+          <label for="form-title">Title</label>
+          <input class="create-form-title" id="form-title" maxlength="100" placeholder="Max 100 characters" required
+                 type="text">
+        </div>
+
+        <div class="input-block">
+          <label for="form-description">Description</label>
+          <textarea class="create-form-description" id="form-description" maxlength="500"
+                    placeholder="Max 500 characters"
+                    required
+                    rows="4"></textarea>
+        </div>
+
+        <div class="input-block">
+          <label for="form-status">Status</label>
+          <select class="create-form-status" id="form-status" required>
+            <option value="Inserito">Inserito</option>
+            <option value="In elaborazione">In elaborazione</option>
+            <option value="Completato">Completato</option>
+          </select>
+        </div>
+
+        <div class="input-block">
+          <label for="form-date">Expiration Date</label>
+          <input class="create-form-date" id="form-date" required type="date">
+        </div>
+
+        <div class="modal-actions">
+          <button class="close-btn">Cancel</button>
+          <button class="form-submit add-task-btn" id="form-submit">Create</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+</div>
+</body>
+</html>

@@ -1,0 +1,181 @@
+:root {
+    --color-primary: hsl(204, 89%, 10%);
+    --color-secondary: hsl(339, 66%, 57%);
+    --color-tertiary: hsl(0, 100%, 99%);
+    --color-bg: hsl(191, 66%, 76%);
+    --color-error: hsl(0, 100%, 60%);
+    --color-success: hsl(120, 100%, 20%);
+    --color-warning: hsl(40, 100%, 50%);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-tertiary);
+    color: var(--color-primary);
+    line-height: 1.5;
+    font-family: "Nunito", sans-serif;
+}
+
+.wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-bg);
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+}
+
+.add-task-btn {
+    background-color: var(--color-secondary);
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    color: var(--color-tertiary);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+}
+
+.add-task-btn:hover {
+    background-color: var(--color-tertiary);
+    color: var(--color-secondary);
+    outline: 1px solid var(--color-secondary);
+}
+
+.tasks-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 96%;
+    margin: 0 auto;
+}
+
+.task {
+    padding: 1rem;
+    background-color: var(--color-tertiary);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.task:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.5);
+    transform: scale(1.01);
+}
+
+.task-delete {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: var(--color-tertiary);
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    color: var(--color-error);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    outline: 1px solid var(--color-error);
+}
+
+.task-delete:hover {
+    background-color: var(--color-error);
+    color: var(--color-tertiary);
+}
+
+.task-status {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .wrapper {
+        max-width: 900px;
+        margin: 1rem auto;
+        height: auto;
+        border-radius: 15px;
+        padding: 2rem;
+    }
+
+    .create-task-modal {
+        max-width: 400px;
+        max-height: 500px;
+        width: auto;
+        border-radius: 15px;
+        padding: 2rem;
+        overflow: hidden;
+    }
+}
+
+.create-task-modal {
+    width: 100vw;
+    height: 100vh;
+    border: none;
+}
+
+.create-modal-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.create-form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.input-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.create-form input {
+    min-height: 2rem;
+}
+
+.create-form textarea {
+    min-height: 2rem;
+}
+
+.create-form select {
+    min-height: 2rem;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.close-btn {
+    background-color: transparent;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    color: var(--color-primary);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+}
