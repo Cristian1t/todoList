@@ -12,3 +12,10 @@ export interface createTask {
   status: string;
   expirationDate: Date;
 }
+
+export interface updateTask {
+  title: string;
+  description: string;
+  status: string;
+  expirationDate: Date;
+}

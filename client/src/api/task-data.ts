@@ -26,10 +26,7 @@ async function deleteTaskById(id: string): Promise<void | { task: Task }> {
   return await response.json();
 }
 
-function updateTask(
-  id: string,
-  task: createTask
-): Promise<void | { task: Task }> {
+function putTask(id: string, task: createTask): Promise<void | { task: Task }> {
   return fetch(urlApi + "/" + id, {
     method: "PUT",
     headers: {
@@ -43,4 +40,4 @@ function getTaskById(id: string): Promise<void | { task: Task }> {
   return fetch(urlApi + "/" + id).then((response) => response.json());
 }
 
-export { getTasks, postTask, deleteTaskById, getTaskById, updateTask };
+export { getTasks, postTask, deleteTaskById, getTaskById, putTask };

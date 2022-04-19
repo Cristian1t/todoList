@@ -18,7 +18,8 @@ body {
 }
 
 .wrapper {
-    height: 100vh;
+    padding: 1rem 0;
+    height: 100%;
     display: flex;
     flex-direction: column;
     background-color: var(--color-bg);
@@ -178,4 +179,37 @@ body {
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     outline: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.is-loading {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--color-bg);
+    border-radius: 50%;
+    border-top-color: var(--color-secondary);
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+.is-loading--all {
+    top: 7%;
+}
+
+@keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
 }

@@ -16,14 +16,18 @@
   <div class="top-bar">
     <h2>To Do List</h2>
     <div class="add-task">
-      <button class="add-task-btn">Add task</button>
+      <button class="add-task-btn" id="add-new-task">Add task</button>
     </div>
   </div>
   <div class="tasks-wrapper" id="tasks">
+    <div class="is-loading is-loading--all" id="is-loading-all">
+    </div>
   </div>
 
   <dialog class="create-task-modal" id="modal">
-    <div class="create-modal-container">
+    <div class="is-loading" id="is-loading">
+    </div>
+    <div class="create-modal-container" id="modal-container">
       <h4>Create new task</h4>
       <form class="create-form" id="modal-form">
 
@@ -57,7 +61,8 @@
 
         <div class="modal-actions">
           <button class="close-btn">Cancel</button>
-          <button class="form-submit add-task-btn" id="form-submit">Create</button>
+          <button class="add-task-btn" id="create-submit">Create</button>
+          <button class="add-task-btn" id="update-submit">Update</button>
         </div>
       </form>
     </div>

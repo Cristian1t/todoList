@@ -1,7 +1,3 @@
-import TaskAll from "./components/task/task-all";
+import TasksAll from "./components/task/tasks-index";
 
-function init() {
-  TaskAll();
-}
-
-init();
+TasksAll();

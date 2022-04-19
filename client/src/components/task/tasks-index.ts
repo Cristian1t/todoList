@@ -1,7 +1,19 @@
 import { format } from "date-fns";
+import { deleteTaskById, getTasks } from "../../api/task-data";
 import { Task } from "../../utils/interfaces/task.interface";
-import deleteTask from "./task-delete";
-import { editTask } from "./task-show";
+import taskUpsert from "./task-upsert";
+
+function TasksAll() {
+  const isLoadingAll = document.getElementById("is-loading-all");
+  // fetch tasks from api and append to DOM
+  getTasks().then((taskList) => {
+    getAllTasks(taskList);
+    isLoadingAll?.classList.add("hidden");
+  });
+
+  // handle task creation
+  createTask();
+}
 
 function getAllTasks(taskList: void | { tasks: Task[] }) {
   const tasks = document.getElementById("tasks");
@@ -9,7 +21,7 @@ function getAllTasks(taskList: void | { tasks: Task[] }) {
   if (!tasks) {
     return;
   }
-  if (taskList) {
+  if (taskList && taskList.tasks.length > 0) {
     taskList.tasks.forEach((task: Task) => {
       if (!task) {
         return;
@@ -40,7 +52,11 @@ function getAllTasks(taskList: void | { tasks: Task[] }) {
       `;
       tasks.appendChild(taskElement);
       handleColor(i);
+
+      // handle task deletion for each task
       deleteTask(i);
+
+      //handle task update for each task
       editTask(task._id, i);
       i++;
     });
@@ -51,6 +67,41 @@ function getAllTasks(taskList: void | { tasks: Task[] }) {
       </div>
     `;
   }
+}
+
+function createTask() {
+  console.log("createTask");
+  const addNewTask = document.getElementById("add-new-task");
+  addNewTask?.addEventListener("click", (e) => {
+    e.preventDefault();
+    taskUpsert("");
+  });
+}
+
+function editTask(id: string, index: number) {
+  console.log("editTask");
+  const task = document.getElementById(`task-${index}`);
+  if (task) {
+    task.addEventListener("click", (e) => {
+      e.preventDefault();
+      taskUpsert(id);
+    });
+  }
+}
+
+function deleteTask(i: number) {
+  const deleteBtn = document.getElementById(
+    `task-delete-${i}`
+  ) as HTMLButtonElement;
+
+  deleteBtn?.addEventListener("click", () => {
+    const taskId = deleteBtn.dataset.id;
+    if (taskId) {
+      deleteTaskById(taskId).then(() => {
+        location.reload();
+      });
+    }
+  });
 }
 
 function handleColor(i: number) {
@@ -64,4 +115,4 @@ function handleColor(i: number) {
   }
 }
 
-export default getAllTasks;
+export default TasksAll;
